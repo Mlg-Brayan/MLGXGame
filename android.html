@@ -303,6 +303,31 @@ h1 {
   overflow-x: auto;
   overflow-y: hidden;
 }
+#categoryGames {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 10px;
+}
+
+.scroll-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.scroll-group::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll-line {
+  display: flex;
+  gap: 12px;
+}
+
+
     </style>
   </head>
 
@@ -490,10 +515,20 @@ h1 {
       <input type="text" id="searchInput" placeholder="Tape le nom du jeu..."
       style="width: 60%; padding: 8px; border-radius: 8px; border: 1px solid #9900ff; background: #1a0a3a; color: #fff;">
     </div>
-    <div class="game-cadre" id="categoryGames">
-    </div>
-    <div id="game-list"></div>
 
+    <div id="categoryGames">
+
+  <div class="scroll-group">
+    <div class="scroll-line"></div>
+    <div class="scroll-line"></div>
+  </div>
+
+  <div class="scroll-group">
+    <div class="scroll-line"></div>
+    <div class="scroll-line"></div>
+  </div>
+
+</div>
 
     <h2>🆕 Nouveaux Jeux</h2>
     <div class="game-cadre" id="newGames">
@@ -1768,28 +1803,32 @@ h1 {
         },
 
       ];
-      // Générer les mini-cadres pour tous les jeux
-      const categoryGamesContainer = document.getElementById("categoryGames");
-      games.forEach(game => {
-        const div = document.createElement("div");
-        div.className = "category-game";
-        div.innerHTML = `
-        <img src="${game.img}" alt="${game.nom}">
-        <div class="game-info-mini">
-        <h4>${game.nom}</h4>
-        <p>${game.description}</p>
-        <div class="btn-telecharger" onclick="toggleDownload(this)">
-        📥 Télécharger </div>
-        <div class="download-options">
-        ${game.playstore ? `<a href="${game.playstore}" target="_blank">📥 Play Store</a>`: ""}
-        ${game.appstore ? `<a href="${game.appstore}" target="_blank">🍎 App Store</a>`: ""}
-        ${game.apk ? `<a href="${game.apk}" target="_blank">⬇️ APK</a>`: ""}
-        </div>
-        </div>
-        `;
+    const groups = document.querySelectorAll(".scroll-group");
+let index = 0;
 
-        categoryGamesContainer.appendChild(div);
-      });
+games.forEach(game => {
+  const div = document.createElement("div");
+  div.className = "category-game";
+  div.innerHTML = `
+    <img src="${game.img}" alt="${game.nom}">
+    <div class="game-info-mini">
+      <h4>${game.nom}</h4>
+      <p>${game.description}</p>
+      <div class="btn-telecharger" onclick="toggleDownload(this)">📥 Télécharger</div>
+      <div class="download-options">
+        ${game.playstore ? `<a href="${game.playstore}" target="_blank">📥 Play Store</a>` : ""}
+        ${game.appstore ? `<a href="${game.appstore}" target="_blank">🍎 App Store</a>` : ""}
+        ${game.apk ? `<a href="${game.apk}" target="_blank">⬇️ APK</a>` : ""}
+      </div>
+    </div>
+  `;
+
+  const group = groups[Math.floor(index / 8) % 2]; 
+  const lines = group.querySelectorAll(".scroll-line");
+  lines[index % 2].appendChild(div);
+
+  index++;
+});
 
       // Filtrer par catégorie
       function filterCategory(categorie) {
