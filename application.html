@@ -151,7 +151,16 @@ h1 {
 }
 .download-options {
   display: none;
-  margin-top: 5px;
+  position:absolute;
+  bottom:50%;
+  left:0;
+  background:#000;
+  border-radius:10px;
+  box-shadow:0 0 20px #9900ff;
+  overflow:hidden;
+  min-width:120px;
+  z-index:20;
+  font-size: 12px;
 }
 
 .download-options.show {
@@ -164,6 +173,36 @@ footer {
   font-size: 14px;
   color: white; 
   }
+  .global-scroll {
+  display: flex;
+  flex-direction: column;
+  gap: 0; /* important : visuellement collé */
+}
+
+.scroll-group {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
+.scroll-line {
+  display: flex;
+  gap: 10px;
+  padding: 5px 10px;
+}
+
+.category-app {
+  min-width: 160px;
+  scroll-snap-align: start;
+}
+.scroll-group {
+  overflow-x: auto;
+  scrollbar-width: none; /* Firefox */
+}
+
+.scroll-group::-webkit-scrollbar {
+  display: none; /* Chrome, Edge, Safari */
+}
+
 </style>
 </head>
 <body>
@@ -194,6 +233,21 @@ footer {
 
 <h2>📦 Toutes les applications</h2>
 <div class="app-cadre" id="categoryApps"></div>
+<div class="global-scroll">
+
+  <!-- Groupe du haut -->
+  <div class="scroll-group">
+    <div class="scroll-line" id="line1"></div>
+    <div class="scroll-line" id="line2"></div>
+  </div>
+
+  <!-- Groupe du bas -->
+  <div class="scroll-group">
+    <div class="scroll-line" id="line3"></div>
+    <div class="scroll-line" id="line4"></div>
+  </div>
+
+</div>
 
 <h2>🎯 Applications de la catégorie sélectionnée</h2>
 <div class="app-cadre" id="filteredCategory"></div>
@@ -1876,6 +1930,39 @@ const apps = [
 
 ];
 
+
+const lines = [
+  document.getElementById("line1"),
+  document.getElementById("line2"),
+  document.getElementById("line3"),
+  document.getElementById("line4")
+];
+apps.forEach((app, index) => {
+  const div = document.createElement("div");
+  div.className = "category-app";
+
+  div.innerHTML = `
+    <img src="${app.img}">
+    <div class="app-info-mini">
+      <h4>${app.nom}</h4>
+      <p>${app.desc}</p>
+
+      <div class="btn-telecharger" onclick="this.nextElementSibling.classList.toggle('show')">
+        📥 Télécharger
+      </div>
+
+      <div class="download-options">
+        ${app.playstore ? `<a class="btn-telecharger" href="${app.playstore}" target="_blank">📱 Play Store</a>` : ""}
+        ${app.appstore ? `<a class="btn-telecharger" href="${app.appstore}" target="_blank">🍎 App Store</a>` : ""}
+        ${app.apk ? `<a class="btn-telecharger" href="${app.apk}" target="_blank">📦 APK</a>` : ""}
+      </div>
+    </div>
+  `;
+
+  lines[index % 4].appendChild(div);
+});
+
+
 // Créer les trois liens cachés
 function createDownloadButtons(app){
   return `
@@ -1894,23 +1981,10 @@ function toggleDownloads(button){
   container.style.display = (container.style.display === "none") ? "block" : "none";
 }
 
-// Générer les mini-cadres
-const categoryAppsContainer = document.getElementById("categoryApps");
-const popularAppsContainer = document.getElementById("popularApps");
-
-apps.forEach(app => {
-  const div = document.createElement("div");
-  div.className = "category-app";
-  div.innerHTML = `<img src="${app.img}" alt="${app.nom}">
-                   <div class="app-info-mini">
-                     <h4>${app.nom}</h4>
-                     <p>${app.desc}</p>
-                     ${createDownloadButtons(app)}
-                   </div>`;
-  categoryAppsContainer.appendChild(div);
-});
-
 // Applications populaires : les 6 premières
+const categoryAppsContainer = document.getElementById("categoryApps");
+const popularAppsContainer = document.getElementById("popularApps"); 
+
 apps.slice(0,6).forEach(app => {
   const div = document.createElement("div");
   div.className = "app";
