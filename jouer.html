@@ -22,7 +22,12 @@ h1{
   -webkit-text-fill-color:transparent;
   text-shadow:0 0 10px #9900ff;
 }
-
+p {
+   font-size: 9px;
+  margin: 2px 0;
+  color: #ddd;
+  margin: 0;
+}
 .search-box{
   text-align:center;
   margin:10px;
@@ -75,7 +80,9 @@ h1{
 }
 .game-card h4{
   margin:5px;
-  font-size:14px;
+  font-size:12px;
+  margin: 0;
+  color: #00f0ff;
 }
 .game-card button{
   margin:8px;
@@ -145,33 +152,157 @@ h1{
 
 <script>
 const games = [
- {name:"Jeu 1",cat:"Fun",img:"https://img.icons8.com/emoji/256/video-game-emoji.png",url:"https://html5.gamedistribution.com/0c89181b9cfe4897afa41b0f94385da9/?gd_sdk_referrer_url=https://www.example.com/games/{game-path}"},
- {name:"Jeu 2",cat:"Arcade",img:"https://img.icons8.com/emoji/256/video-game-emoji.png",url:"https://html5.gamedistribution.com/0ea7b7e7316a47c38ac5c98ddd42ec4a/?gd_sdk_referrer_url=https://www.example.com/games/{game-path}"},
- {name:"Jeu 3",cat:"Sport",img:"https://img.icons8.com/emoji/256/video-game-emoji.png",url:"https://html5.gamedistribution.com/cd71a6d56b514239b279f07f7cb7694f/?gd_sdk_referrer_url=https://www.example.com/games/{game-path}"},
- {name:"Jeu 4",cat:"Puzzle",img:"https://img.icons8.com/emoji/256/video-game-emoji.png",url:"https://html5.gamedistribution.com/0b18452cd7844e308b726bf05034fac2/?gd_sdk_referrer_url=https://www.example.com/games/{game-path}"},
- {name:"Jeu 5",cat:"Casual",img:"https://img.icons8.com/emoji/256/video-game-emoji.png",url:"https://html5.gamedistribution.com/d0b8e5ba257d4f888738a7ec722443f1/?gd_sdk_referrer_url=https://www.example.com/games/{game-path}"},
- {name:"Jeu 6",cat:"Fun",img:"https://img.icons8.com/emoji/256/video-game-emoji.png",url:"https://html5.gamedistribution.com/5ca38504001d4177bce9e5651d267a5d/?gd_sdk_referrer_url=https://www.example.com/games/{game-path}"},
- {name:"Jeu 7",cat:"Arcade",img:"https://img.icons8.com/emoji/256/video-game-emoji.png",url:"https://html5.gamedistribution.com/4625c660923c42b8a5c8e4d2fbdc98ee/?gd_sdk_referrer_url=https://www.example.com/games/{game-path}"},
- {name:"Jeu 8",cat:"Sport",img:"https://img.icons8.com/emoji/256/video-game-emoji.png",url:"https://html5.gamedistribution.com/57de0fa8b9fb4df783e7eb8248ac5e5a/?gd_sdk_referrer_url=https://www.example.com/games/{game-path}"},
- {name:"Jeu 9",cat:"Puzzle",img:"https://img.icons8.com/emoji/256/video-game-emoji.png",url:"https://html5.gamedistribution.com/c13ee9c06edc4f0a8d7f6f291a7c13d8/?gd_sdk_referrer_url=https://www.example.com/games/{game-path}"},
- {name:"Jeu 10",cat:"Casual",img:"https://img.icons8.com/emoji/256/video-game-emoji.png",url:"https://html5.gamedistribution.com/fbd63068e7fe4c7b8d2f977390db446f/?gd_sdk_referrer_url=https://www.example.com/games/{game-path}"},
- {name:"Jeu 11",cat:"Fun",img:"https://img.icons8.com/emoji/256/video-game-emoji.png",url:"https://html5.gamedistribution.com/1b392a6ff2514ce48a70c90b349e5de5/?gd_sdk_referrer_url=https://www.example.com/games/{game-path}"},
- {name:"Jeu 12",cat:"Arcade",img:"https://img.icons8.com/emoji/256/video-game-emoji.png",url:"https://html5.gamedistribution.com/1135d8c4c0ee453895b0b0eeececbb92/?gd_sdk_referrer_url=https://www.example.com/games/{game-path}"},
- {name:"Jeu 13",cat:"Sport",img:"https://img.icons8.com/emoji/256/video-game-emoji.png",url:"https://html5.gamedistribution.com/63d4d52b56da44b1acaf2c957ee3d04f/?gd_sdk_referrer_url=https://www.example.com/games/{game-path}"},
- {name:"Jeu 14",cat:"Puzzle",img:"https://img.icons8.com/emoji/256/video-game-emoji.png",url:"https://html5.gamedistribution.com/e5dcd09e91004a5c8d1b7d473a572bcf/?gd_sdk_referrer_url=https://www.example.com/games/{game-path}"},
- {name:"Jeu 15",cat:"Casual",img:"https://img.icons8.com/emoji/256/video-game-emoji.png",url:"https://html5.gamedistribution.com/761169e0288b433f8f8ddcd27da627e5/?gd_sdk_referrer_url=https://www.example.com/games/{game-path}"},
- {name:"Jeu 16",cat:"Fun",img:"https://img.icons8.com/emoji/256/video-game-emoji.png",url:"https://html5.gamedistribution.com/80ddf44c832b44d69d72392d9453ca00/?gd_sdk_referrer_url=https://www.example.com/games/{game-path}"},
- {name:"Jeu 17",cat:"Arcade",img:"https://img.icons8.com/emoji/256/video-game-emoji.png",url:"https://html5.gamedistribution.com/212dcfed3c2b4568b0069fcc346ad421/?gd_sdk_referrer_url=https://www.example.com/games/{game-path}"},
- {name:"Jeu 18",cat:"Sport",img:"https://img.icons8.com/emoji/256/video-game-emoji.png",url:"https://html5.gamedistribution.com/ba08d794f5c84775b848781e70497849/?gd_sdk_referrer_url=https://www.example.com/games/{game-path}"},
- {name:"Jeu 19",cat:"Puzzle",img:"https://img.icons8.com/emoji/256/video-game-emoji.png",url:"https://html5.gamedistribution.com/60cc69e078184c63bf3568d975c348a4/?gd_sdk_referrer_url=https://www.example.com/games/{game-path}"},
- {name:"Jeu 20",cat:"Casual",img:"https://img.icons8.com/emoji/256/video-game-emoji.png",url:"https://html5.gamedistribution.com/7a83d41c26c54898892c807492494f21/?gd_sdk_referrer_url=https://www.example.com/games/{game-path}"},
- {name:"Jeu 21",cat:"Fun",img:"https://img.icons8.com/emoji/256/video-game-emoji.png",url:"https://html5.gamedistribution.com/ee57ac72ac07468cbefcfdde8ed90f12/?gd_sdk_referrer_url=https://www.example.com/games/{game-path}"},
- {name:"Jeu 22",cat:"Arcade",img:"https://img.icons8.com/emoji/256/video-game-emoji.png",url:"https://html5.gamedistribution.com/f618546bbe6a42b4850156aebb8c202e/?gd_sdk_referrer_url=https://www.example.com/games/{game-path}"},
- {name:"Jeu 23",cat:"Sport",img:"https://img.icons8.com/emoji/256/video-game-emoji.png",url:"https://html5.gamedistribution.com/b44c79264a104857b02063703691ec58/?gd_sdk_referrer_url=https://www.example.com/games/{game-path}"},
- {name:"Jeu 24",cat:"Puzzle",img:"https://img.icons8.com/emoji/256/video-game-emoji.png",url:"https://html5.gamedistribution.com/015cc016b4f04be28f8593e14c70ccef/?gd_sdk_referrer_url=https://www.example.com/games/{game-path}"},
- {name:"Jeu 25",cat:"Casual",img:"https://img.icons8.com/emoji/256/video-game-emoji.png",url:"https://html5.gamedistribution.com/b51341f2f9ab4bc09b23312b5bff30cb/?gd_sdk_referrer_url=https://www.example.com/games/{game-path}"}
-];
+  {
+    name:"Assassin's Hunt : Jeu du Far West",
+    cat:"Fun",
+    img:"https://business.gamezop.com/img/gamezop/9lpHai56Q/cover.jpg?w=300&q=50",
+    url:"https://zv1y2i8p.play.gamezop.com/g/9lpHai56Q",
+    desc:"Deviens un chasseur redoutable dans l’univers du Far West."
+  },
+  {
+    name:"Ludo avec des amis",
+    cat:"Arcade",
+    img:"https://business.gamezop.com/img/gamezop/SkhljT2fdgb/cover.jpg?w=300&q=50",
+    url:"https://zv1y2i8p.play.gamezop.com/g/SkhljT2fdgb",
+    desc:"Joue au Ludo classique et défie tes amis dans des parties fun."
+  },
+  {
+    name:"Blocks Adventure Jungle Saga",
+    cat:"Puzzle",
+    img:"https://business.gamezop.com/img/gamezop/UCS62KJ8c/cover.jpg?w=300&q=50",
+    url:"https://zv1y2i8p.play.gamezop.com/g/UCS62KJ8c",
+    desc:"Résous des puzzles colorés dans une aventure en pleine jungle."
+  },
+  {
+    name:"Mahjong At Home: Scandinavian Edition",
+    cat:"Fun",
+    img:"https://business.gamezop.com/img/gamezop/JVhRZNwly/cover.jpg?w=300&q=50",
+    url:"https://zv1y2i8p.play.gamezop.com/g/JVhRZNwly",
+    desc:"Un Mahjong relaxant avec un style scandinave élégant."
+  },
+  {
+    name:"Box Crush",
+    cat:"Casual",
+    img:"https://business.gamezop.com/img/gamezop/S1Wrpf1v5ym/cover.jpg?w=300&q=50",
+    url:"https://zv1y2i8p.play.gamezop.com/g/S1Wrpf1v5ym",
+    desc:"Détruis les boîtes avec stratégie pour marquer un maximum de points."
+  },
+  {
+    name:"Cyberfusion",
+    cat:"Arcade",
+    img:"https://business.gamezop.com/img/gamezop/HJXei0j/cover.jpg?w=300&q=50",
+    url:"https://zv1y2i8p.play.gamezop.com/g/HJXei0j",
+    desc:"Un jeu futuriste rapide avec des effets visuels impressionnants."
+  },
+  {
+    name:"Ellie Summer Spa Beauty Salon",
+    cat:"Fun",
+    img:"https://business.gamezop.com/img/gamezop/lzFg1zsV5/cover.jpg?w=300&q=50",
+    url:"https://zv1y2i8p.play.gamezop.com/g/lzFg1zsV5",
+    desc:"Occupe-toi d’Ellie dans son salon beauté pendant l’été."
+  },
+  {
+    name:"Chef Tycoon",
+    cat:"Puzzle",
+    img:"https://business.gamezop.com/img/gamezop/xqO4nZ6Kt/cover.jpg?w=300&q=50",
+    url:"https://zv1y2i8p.play.gamezop.com/g/xqO4nZ6Kt",
+    desc:"Gère ton restaurant et deviens un vrai chef à succès."
+  },
+  {
+    name:"Bubble Shooter Classic",
+    cat:"Casual",
+    img:"https://business.gamezop.com/img/gamezop/yVywAGBQ6/cover.jpg?w=300&q=50",
+    url:"https://zv1y2i8p.play.gamezop.com/g/yVywAGBQ6",
+    desc:"Le célèbre jeu de bulles à éclater pour se détendre."
+  },
+  {
+    name:"Chess Grandmaster",
+    cat:"Arcade",
+    img:"https://business.gamezop.com/img/gamezop/rkAXTzkD5kX/cover.jpg?w=300&q=50",
+    url:"https://zv1y2i8p.play.gamezop.com/g/rkAXTzkD5kX",
+    desc:"Améliore ta stratégie et joue aux échecs comme un pro."
+  },
+  {
+    name:"Fruity Fiesta",
+    cat:"Fun",
+    img:"https://business.gamezop.com/img/gamezop/mKZZW9NXW/cover.jpg?w=300&q=50",
+    url:"https://zv1y2i8p.play.gamezop.com/g/mKZZW9NXW",
+    desc:"Un jeu coloré rempli de fruits et de défis amusants."
+  },
+  {
+    name:"Spider Solitaire",
+    cat:"Puzzle",
+    img:"https://business.gamezop.com/img/gamezop/B1MfIa4QCg/cover.jpg?w=300&q=50",
+    url:"https://zv1y2i8p.play.gamezop.com/g/B1MfIa4QCg",
+    desc:"Le célèbre solitaire pour entraîner ta logique et ta patience."
+  },
+  {
+    name:"ZUNO",
+    cat:"Arcade",
+    img:"https://business.gamezop.com/img/gamezop/ByQxJnp7qRB/cover.jpg?w=300&q=50",
+    url:"https://zv1y2i8p.play.gamezop.com/g/ByQxJnp7qRB",
+    desc:"Un jeu de cartes inspiré du UNO, fun et stratégique."
+  },
+  {
+    name:"Escape Run",
+    cat:"Fun",
+    img:"https://business.gamezop.com/img/gamezop/Skz4pzkDqyX/cover.jpg?w=300&q=50",
+    url:"https://zv1y2i8p.play.gamezop.com/g/Skz4pzkDqyX",
+    desc:"Cours, évite les obstacles et tente de t’échapper le plus loin possible."
+  },
+  {
+    name:"Solitaire Gold",
+    cat:"Casual",
+    img:"https://business.gamezop.com/img/gamezop/rkPlk2T7qAr/cover.jpg?w=300&q=50",
+    url:"https://zv1y2i8p.play.gamezop.com/g/rkPlk2T7qAr",
+    desc:"Un solitaire élégant pour jouer tranquillement à tout moment."
+  },
+   {name:"Brick Plunge", cat:"Puzzle", img:"https://business.gamezop.com/img/gamezop/BJ9bvzIKdJl/cover.jpg?w=300&q=50", url:"https://zv1y2i8p.play.gamezop.com/g/BJ9bvzIKdJl", desc:"Fais tomber les briques et casse-les toutes !"},
+  {name:"Slide And Divide", cat:"Puzzle", img:"https://business.gamezop.com/img/gamezop/PLQTtp9Ei/cover.jpg?w=300&q=50", url:"https://zv1y2i8p.play.gamezop.com/g/PLQTtp9Ei", desc:"Glisse et divise pour résoudre chaque niveau."},
+  {name:"Fusion Mania", cat:"Arcade", img:"https://business.gamezop.com/img/gamezop/hfPOimYqY/cover.jpg?w=300&q=50", url:"https://zv1y2i8p.play.gamezop.com/g/hfPOimYqY", desc:"Fusionne les éléments avant que le temps ne s'écoule !"},
+  {name:"Monster Girls Back To School", cat:"Fun", img:"https://business.gamezop.com/img/gamezop/VrGGiX5dX/cover.jpg?w=300&q=50", url:"https://zv1y2i8p.play.gamezop.com/g/VrGGiX5dX", desc:"Aide les monstres à retourner à l'école en s'amusant."},
+  {name:"Ellie Bachelorette Party", cat:"Casual", img:"https://business.gamezop.com/img/gamezop/NzI2gCZFn/cover.jpg?w=300&q=50", url:"https://zv1y2i8p.play.gamezop.com/g/NzI2gCZFn", desc:"Prépare la fête parfaite pour Ellie !"},
+  {name:"De l'intello au populaire du lycée", cat:"Fun", img:"https://business.gamezop.com/img/gamezop/XuSI73Wi5/cover.jpg?w=300&q=50", url:"https://zv1y2i8p.play.gamezop.com/g/XuSI73Wi5", desc:"Transforme ton personnage du nerd au roi du lycée."},
+  {name:"Don't Touch the Walls", cat:"Arcade", img:"https://business.gamezop.com/img/gamezop/rybx12amqCB/cover.jpg?w=300&q=50", url:"https://zv1y2i8p.play.gamezop.com/g/rybx12amqCB", desc:"Évite les murs et tiens le plus longtemps possible !"},
+  {name:"Eaux enchantées", cat:"Fun", img:"https://business.gamezop.com/img/gamezop/HJskh679Cr/cover.jpg?w=300&q=50", url:"https://zv1y2i8p.play.gamezop.com/g/HJskh679Cr", desc:"Explore des eaux magiques et découvre leurs secrets."},
+  {name:"Snakes & Ladders", cat:"Casual", img:"https://business.gamezop.com/img/gamezop/rJWyhp79RS/cover.jpg?w=300&q=50", url:"https://zv1y2i8p.play.gamezop.com/g/rJWyhp79RS", desc:"Monte ou descends selon la chance du dé !"},
+  {name:"Knife Flip", cat:"Arcade", img:"https://business.gamezop.com/img/gamezop/H1PJn6mqAr/cover.jpg?w=300&q=50", url:"https://zv1y2i8p.play.gamezop.com/g/H1PJn6mqAr", desc:"Lance les couteaux avec précision et succès !"},
+  {name:"Colour Chase", cat:"Puzzle", img:"https://business.gamezop.com/img/gamezop/B1JBaM1D9y7/cover.jpg?w=300&q=50", url:"https://zv1y2i8p.play.gamezop.com/g/B1JBaM1D9y7", desc:"Chasse les bonnes couleurs avant qu'il ne soit trop tard !"},
+  {name:"Go Chicken Go", cat:"Fun", img:"https://business.gamezop.com/img/gamezop/rJ57aMJDcJm/cover.jpg?w=300&q=50", url:"https://zv1y2i8p.play.gamezop.com/g/rJ57aMJDcJm", desc:"Fais courir le poulet sans qu’il se fasse attraper !"},
+  {name:"Plongeon", cat:"Arcade", img:"https://business.gamezop.com/img/gamezop/SJXVafJP51Q/cover.jpg?w=300&q=50", url:"https://zv1y2i8p.play.gamezop.com/g/SJXVafJP51Q", desc:"Plonge au bon moment et évite les obstacles !"},
+  {name:"Dérouler", cat:"Puzzle", img:"https://business.gamezop.com/img/gamezop/HkRMTzJDck7/cover.jpg?w=300&q=50", url:"https://zv1y2i8p.play.gamezop.com/g/HkRMTzJDck7", desc:"Fais rouler les éléments pour compléter les niveaux."},
+  {name:"Baie de Sway", cat:"Fun", img:"https://business.gamezop.com/img/gamezop/B1PMIp4XCe/cover.jpg?w=300&q=50", url:"https://zv1y2i8p.play.gamezop.com/g/B1PMIp4XCe", desc:"Explore la baie et profite de l'aventure relaxante."},
+  {name:"Jumpy: The First Jumper", cat:"Arcade", img:"https://business.gamezop.com/img/gamezop/HkO-wf8F_Jx/cover.jpg?w=300&q=50", url:"https://zv1y2i8p.play.gamezop.com/g/HkO-wf8F_Jx", desc:"Saute de plateforme en plateforme sans tomber !"},
+  {name:"Astro Knot", cat:"Puzzle", img:"https://business.gamezop.com/img/gamezop/HJD9VMRQa/cover.jpg?w=300&q=50", url:"https://zv1y2i8p.play.gamezop.com/g/HJD9VMRQa", desc:"Résous les nœuds de l’espace et progresse."},
+  {name:"École de pilotage", cat:"Fun", img:"https://business.gamezop.com/img/gamezop/VJOGOyGb9l/cover.jpg?w=300&q=50", url:"https://zv1y2i8p.play.gamezop.com/g/VJOGOyGb9l", desc:"Apprends à piloter des avions dans cette école virtuelle."},
+  {name:"Bot d'esquive", cat:"Arcade", img:"https://business.gamezop.com/img/gamezop/SJ2OGpIn/cover.jpg?w=300&q=50", url:"https://zv1y2i8p.play.gamezop.com/g/SJ2OGpIn", desc:"Esquive les bots et reste en vie le plus longtemps possible !"},
+  {name:"Pingouin Skip", cat:"Fun", img:"https://business.gamezop.com/img/gamezop/HJee0YHZ_E/cover.jpg?w=300&q=50", url:"https://zv1y2i8p.play.gamezop.com/g/HJee0YHZ_E", desc:"Aide le pingouin à sauter à travers la glace."},
+   {name:"Bowling Stars", cat:"Sports", img:"https://business.gamezop.com/img/gamezop/BkdJhTX50B/cover.jpg?w=300&q=50", url:"https://zv1y2i8p.play.gamezop.com/g/BkdJhTX50B", desc:"Lance la boule et fais tomber tous les quilles pour marquer."},
+  {name:"Football Mania", cat:"Sports", img:"https://business.gamezop.com/img/gamezop/hazlxvfac/cover.jpg?w=300&q=50", url:"https://zv1y2i8p.play.gamezop.com/g/hazlxvfac", desc:"Joue au football et marque des buts spectaculaires."},
+  {name:"Cricket Mania", cat:"Sports", img:"https://business.gamezop.com/img/gamezop/PRbBrRtjr/cover.jpg?w=300&q=50", url:"https://zv1y2i8p.play.gamezop.com/g/PRbBrRtjr", desc:"Participe à des matchs de cricket rapides et fun."},
+  {name:"Football Kickoff", cat:"Sports", img:"https://business.gamezop.com/img/gamezop/WaQryduJa/cover.jpg?w=300&q=50", url:"https://zv1y2i8p.play.gamezop.com/g/WaQryduJa", desc:"Donne des coups francs précis et marque des buts."},
+  {name:"Soccer Wizard", cat:"Sports", img:"https://business.gamezop.com/img/gamezop/6tEYzgxz2/cover.jpg?w=300&q=50", url:"https://zv1y2i8p.play.gamezop.com/g/6tEYzgxz2", desc:"Utilise la magie pour dribbler et marquer des buts spectaculaires."},
+  {name:"Hyperdrive Swinger", cat:"Arcade", img:"https://business.gamezop.com/img/gamezop/wIRrQjVa7/cover.jpg?w=300&q=50", url:"https://zv1y2i8p.play.gamezop.com/g/wIRrQjVa7", desc:"Fonce à toute vitesse et évite les obstacles."},
+  {name:"Blaze Rider", cat:"Arcade", img:"https://business.gamezop.com/img/gamezop/yr4TqJhLr/cover.jpg?w=300&q=50", url:"https://zv1y2i8p.play.gamezop.com/g/yr4TqJhLr", desc:"Cours et saute sur les plateformes à grande vitesse."},
+  {name:"Pool Master", cat:"Sports", img:"https://business.gamezop.com/img/gamezop/hgempP8Sc/cover.jpg?w=300&q=50", url:"https://zv1y2i8p.play.gamezop.com/g/hgempP8Sc", desc:"Affronte tes amis au billard et deviens le maître du pool."},
+  {name:"Fléchettes", cat:"Sports", img:"https://business.gamezop.com/img/gamezop/SkF7yhp7q0B/cover.jpg?w=300&q=50", url:"https://zv1y2i8p.play.gamezop.com/g/SkF7yhp7q0B", desc:"Lance les fléchettes et vise le centre de la cible."},
+  {name:"Soccer Jerks", cat:"Sports", img:"https://business.gamezop.com/img/gamezop/BJ8Wb8j7ILx/cover.jpg?w=300&q=50", url:"https://zv1y2i8p.play.gamezop.com/g/BJ8Wb8j7ILx", desc:"Affronte d’autres joueurs dans des mini-matchs de foot fun."},
+  {name:"Street Dunkies", cat:"Sports", img:"https://business.gamezop.com/img/gamezop/rk7G6Mkvcym/cover.jpg?w=300&q=50", url:"https://zv1y2i8p.play.gamezop.com/g/rk7G6Mkvcym", desc:"Dunks spectaculaires dans la rue pour marquer le plus de points."},
+  {name:"Foosball Kick", cat:"Sports", img:"https://business.gamezop.com/img/gamezop/Sk1Wyn6XqRH/cover.jpg?w=300&q=50", url:"https://zv1y2i8p.play.gamezop.com/g/Sk1Wyn6XqRH", desc:"Joue au baby-foot et marque contre tes adversaires."},
+  {name:"Table Tennis Shots", cat:"Sports", img:"https://business.gamezop.com/img/gamezop/HJY4pfJP9JQ/cover.jpg?w=300&q=50", url:"https://zv1y2i8p.play.gamezop.com/g/HJY4pfJP9JQ", desc:"Joue au ping-pong et effectue des smashs puissants."},
+  {name:"Kickin'", cat:"Sports", img:"https://business.gamezop.com/img/gamezop/r1ozpMkD5Jm/cover.jpg?w=300&q=50", url:"https://zv1y2i8p.play.gamezop.com/g/r1ozpMkD5Jm", desc:"Dribble et marque des buts dans ce jeu rapide de football."},
+  {name:"Dribble Kings", cat:"Sports", img:"https://business.gamezop.com/img/gamezop/SkJf58Ouf0/cover.jpg?w=300&q=50", url:"https://zv1y2i8p.play.gamezop.com/g/SkJf58Ouf0", desc:"Dribble avec précision et marque contre l’adversaire."},
+  {name:"Minigolf Kingdom", cat:"Sports", img:"https://business.gamezop.com/img/gamezop/S1A0FBWuE/cover.jpg?w=300&q=50", url:"https://zv1y2i8p.play.gamezop.com/g/S1A0FBWuE", desc:"Franchis les obstacles et mets la balle dans le trou."},
+  {name:"Basketball Master", cat:"Sports", img:"https://business.gamezop.com/img/gamezop/HyCKrWd4/cover.jpg?w=300&q=50", url:"https://zv1y2i8p.play.gamezop.com/g/HyCKrWd4", desc:"Deviens le maître du basket en réussissant tous les tirs."},
+  {name:"Furious Speed", cat:"Arcade", img:"https://business.gamezop.com/img/gamezop/rkwCYBZuV/cover.jpg?w=300&q=50", url:"https://zv1y2i8p.play.gamezop.com/g/rkwCYBZuV", desc:"Cours le plus vite possible tout en évitant les obstacles."},
+  {name:"Lane Battles", cat:"Arcade", img:"https://business.gamezop.com/img/gamezop/4kZgf_1z-9l/cover.jpg?w=300&q=50", url:"https://zv1y2i8p.play.gamezop.com/g/4kZgf_1z-9l", desc:"Affronte d’autres joueurs dans des courses rapides sur la piste."},
+  {name:"Traffic Command", cat:"Arcade", img:"https://business.gamezop.com/img/gamezop/SykGDfUKOkg/cover.jpg?w=300&q=50", url:"https://zv1y2i8p.play.gamezop.com/g/SykGDfUKOkg", desc:"Gère le trafic et évite les accidents dans la ville."},
+  {name:"Let Me Grow", cat:"Casual", img:"https://business.gamezop.com/img/gamezop/SklmW1ad_/cover.jpg?w=300&q=50", url:"https://zv1y2i8p.play.gamezop.com/g/SklmW1ad_", desc:"Fais grandir tes plantes et développe ton jardin."},
+  {name:"Morpion", cat:"Casual", img:"https://business.gamezop.com/img/gamezop/H1WmafkP9JQ/cover.jpg?w=300&q=50", url:"https://zv1y2i8p.play.gamezop.com/g/H1WmafkP9JQ", desc:"Le classique Tic Tac Toe contre l’ordinateur ou un ami."},
+  {name:"Échecs juniors", cat:"Puzzle", img:"https://business.gamezop.com/img/gamezop/Hkh7azyv9km/cover.jpg?w=300&q=50", url:"https://zv1y2i8p.play.gamezop.com/g/Hkh7azyv9km", desc:"Apprends les échecs et joue contre des adversaires faciles."},
+  {name:"Falling Through", cat:"Arcade", img:"https://business.gamezop.com/img/gamezop/ByGqEfCXa/cover.jpg?w=300&q=50", url:"https://zv1y2i8p.play.gamezop.com/g/ByGqEfCXa", desc:"Tombe à travers les plateformes et évite les obstacles."},
 
+];
 
 const container = document.getElementById("games");
 
@@ -182,6 +313,7 @@ function render(list){
       <div class="game-card">
         <img src="${g.img}">
         <h4>${g.name}</h4>
+         <p>${g.desc}</p>
         <button onclick="play('${g.url}')">▶️ Jouer</button>
       </div>`;
   });
