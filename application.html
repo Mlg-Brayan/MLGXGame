@@ -3,259 +3,222 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Applications | MLG XGame</title>
+
+<title>MLG XGame — Applications</title>
+
 <style>
-body {
-  font-family: Arial, sans-serif;
-  background-color: black;
-  color: #00d8ff;
-  margin: 0;
+
+body{
+margin:0;
+font-family:Arial, Helvetica, sans-serif;
+background:linear-gradient(135deg,#000,#0a0a1a);
+color:white;
 }
 
-/* TITRES */
-h1, h2, h3 { text-align: center; margin: 10px 0; color: #ffffff; }
-h1 {
-  font-size: 30px;
-  text-shadow: 0 0 10px #9900ff;
-  color: #9900ff;
+/* HEADER */
+
+header{
+padding:18px;
+text-align:center;
+background:#000;
+box-shadow:0 0 15px #00ff;
 }
 
-/* BOUTONS CATEGORIES */
-.bouton-cadre{
-  display: flex;
-  font-weight: bold;
-  gap: 10px;
-  overflow-x: auto;
-  padding: 10px;
-}
-.bouton {
-  border-radius: 10px;
-  background: #9900ff;
-  color: white;
-  text-align: center;
-  font-size: 12px;
-  padding: 10px 25px;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: all 0.3s;
-}
-.bouton:hover {
-  transform: scale(1.05);
-  color: #00d8ff;
-  box-shadow: 0 0 15px #00d8ff;
+header h1{
+margin:0;
+color:#00ff;
 }
 
-/* GRANDS CADRES APPLICATIONS POPULAIRES */
-.app-cadre {
-  display: grid;
-  grid-auto-flow: column;
-  grid-template-rows: repeat(2, 1fr);
-  gap: 15px;
-  padding: 15px;
-  overflow-x: auto;
-  overflow-y: hidden;
-}
-.app {
-  position: relative;
-  border-radius: 15px;
-  background: #1a0a3e;
-  transition: transform 0.3s, box-shadow 0.3s;
-  min-width: 300px;
-  height: 140px;
-  overflow: hidden;
-  cursor: pointer;
-}
-.app:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px #9900ff;
-}
-.app img { width: 100%; height: 100%; object-fit: cover; }
+/* SEARCH */
 
-/* INFO APP grands cadres */
-.app-info {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  background: rgba(10,10,26,0.9);
-  padding: 8px;
-  box-sizing: border-box;
-}
-.app-info h4 { margin: 2px 0; font-size: 14px; color: #9900ff; }
-.app-info p { margin: 2px 0 6px; font-size: 11px; color: #ddd; }
-
-/* BOUTON TELECHARGER */
-.btn-telecharger {
-  display: block;
-  text-align: center;
-  background: linear-gradient(90deg,#9900ff,#00d8ff);
-  color: white;
-  padding: 6px;
-  border-radius: 8px;
-  font-size: 12px;
-  font-weight: bold;
-  text-decoration: none;
-  cursor: pointer;
-}
-.btn-telecharger:active { transform: scale(0.95); }
-
-/* MINI-CADRES APPLICATIONS PAR CATEGORIE */
-.category-app {
-  position: relative;
-  border-radius: 10px;
-  background: #1a1a2e;
-  width: 120px;
-  height: 150px;
-  flex: 0 0 auto;
-  overflow: hidden;
-  cursor: pointer;
-  text-align: center;
-  color: #00d8ff;
-  font-size: 11px;
-}
-.category-app img { width: 100%; height: 100%; object-fit: cover; }
-.category-app .app-info-mini {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  background: rgba(10,10,26,0.8);
-  padding: 5px;
-  box-sizing: border-box;
-}
-.category-app .app-info-mini h4 { margin: 2px 0; font-size: 12px; color: #9900ff; }
-.category-app .app-info-mini p { margin: 2px 0 4px; font-size: 9px; color: #ddd; }
-.category-app .download-options a.btn-telecharger {
-  font-size: 10px;
-  padding: 4px 5px;
-  display: block;
-  text-align: center;
-  background:#00ff;
-  color: white;
-  border-radius: 6px;
-  text-decoration: none;
-  margin-top: 2px;
+.search{
+padding:15px;
+text-align:center;
 }
 
-/* cacher scrollbar horizontal */
-.app-cadre::-webkit-scrollbar,
-.bouton-cadre::-webkit-scrollbar { display: none; }
-.app-cadre { scrollbar-width: none; -ms-overflow-style: none; }
-
-#categoryApps {
-  display: grid;
-  grid-auto-flow: column;
-  grid-template-rows: repeat(4, 1fr);
-  gap: 12px;
-  padding: 15px;
-  overflow-x: auto;
-  overflow-y: hidden;
-}
-.download-options {
-  display: none;
-  position:absolute;
-  bottom:50%;
-  left:0;
-  background:#000;
-  border-radius:10px;
-  box-shadow:0 0 20px #9900ff;
-  overflow:hidden;
-  min-width:120px;
-  z-index:20;
-  font-size: 12px;
+.search input{
+width:90%;
+padding:12px;
+border:none;
+border-radius:10px;
+font-size:16px;
+outline:none;
 }
 
-.download-options.show {
-  display: block;
-}
-footer {
-  text-align: center;
-  background-color: #111;
-  padding: 10px;
-  font-size: 14px;
-  color: white; 
-  }
-  .global-scroll {
-  display: flex;
-  flex-direction: column;
-  gap: 0; /* important : visuellement collé */
+/* CATEGORIES */
+
+.categories{
+display:flex;
+overflow-x:auto;
+gap:10px;
+padding:10px;
 }
 
-.scroll-group {
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
+.cat-btn{
+background:#00ff;
+padding:8px 14px;
+border-radius:20px;
+white-space:nowrap;
+cursor:pointer;
+transition:0.25s;
 }
 
-.scroll-line {
-  display: flex;
-  gap: 10px;
-  padding: 5px 10px;
+.cat-btn:hover{
+background:#00ff;
+color:black;
 }
 
-.category-app {
-  min-width: 160px;
-  scroll-snap-align: start;
-}
-.scroll-group {
-  overflow-x: auto;
-  scrollbar-width: none; /* Firefox */
+/* GRID */
+
+.apps{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
+gap:15px;
+padding:15px;
 }
 
-.scroll-group::-webkit-scrollbar {
-  display: none; /* Chrome, Edge, Safari */
+/* CARD */
+
+.card{
+background:#0a0a1a;
+border-radius:14px;
+overflow:hidden;
+transition:0.3s;
+box-shadow:0 0 10px #000;
+position:relative;
+}
+
+.card:hover{
+transform:scale(1.05);
+box-shadow:0 0 15px #38bdf888;
+}
+
+.card img{
+width:100%;
+height:120px;
+object-fit:cover;
+}
+
+.card-content{
+padding:8px;
+}
+
+.card h3{
+margin:5px 0;
+font-size:14px;
+}
+
+.card p{
+font-size:12px;
+opacity:0.8;
+}
+
+/* DOWNLOAD BUTTON */
+
+.download-btn{
+width:100%;
+margin-top:6px;
+padding:8px;
+border:none;
+border-radius:6px;
+background:#00ff;
+color:black;
+font-weight:bold;
+cursor:pointer;
+}
+
+/* POPUP MENU */
+
+.download-menu{
+display:none;
+position:absolute;
+bottom:60px;
+left:10px;
+right:10px;
+
+flex-direction:column;
+background:#0a0a1a;
+border-radius:8px;
+overflow:hidden;
+
+box-shadow:0 8px 20px #000;
+z-index:10;
+
+animation:pop 0.15s ease;
+}
+
+.download-menu a{
+padding:8px;
+color:white;
+text-decoration:none;
+font-size:13px;
+border-top:1px solid #0a0a1a;
+}
+
+.download-menu a:hover{
+background:#38bdf8;
+color:black;
+}
+
+@keyframes pop{
+from{
+opacity:0;
+transform:translateY(10px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* FOOTER */
+
+footer{
+text-align:center;
+padding:12px;
+background:#020617;
+font-size:12px;
 }
 
 </style>
 </head>
+
 <body>
 
-<h1>📱 Applications MLG XGame</h1>
+<header>
+<h1>📱💻 Applications — MLG XGame</h1>
+</header>
 
-<h2>🔥 Applications Populaires</h2>
-
-<div class="app-cadre" id="popularApps"></div>
-
-<h3>🔍 Rechercher une application</h3>
-<div style="text-align:center; margin-bottom:15px;">
-  <input type="text" id="searchInput" placeholder="Tapez le nom de l'application..." 
-         style="width:80%; max-width:400px; padding:8px; border-radius:8px; border:none; font-size:14px;">
+<div class="search">
+<input type="text" placeholder="Rechercher une application..." id="search" onkeyup="searchApp()">
 </div>
 
-<h3>Nos Catégories</h3>
-<div class="bouton-cadre">
-  <div class="bouton" onclick="filterCategory('Gaming')">🎮 Gaming</div>
-  <div class="bouton" onclick="filterCategory('Utilitaire')">🛠 Utilitaires</div>
-  <div class="bouton" onclick="filterCategory('Internet')">🌐 Internet</div>
-  <div class="bouton" onclick="filterCategory('Musique')">🎵 Musique</div>
-  <div class="bouton" onclick="filterCategory('Education')">📚 Education</div>
-  <div class="bouton" onclick="filterCategory('Communication')">💬 Communication</div>
-  <div class="bouton" onclick="filterCategory('Productivité')">🧠 Productivité</div>
-  <div class="bouton" onclick="filterCategory('Divertissement')">🎭 Divertissement</div>
-</div>
+<div class="categories">
 
-<h2>📦 Toutes les applications</h2>
-<div class="app-cadre" id="categoryApps"></div>
-<div class="global-scroll">
-
-  <!-- Groupe du haut -->
-  <div class="scroll-group">
-    <div class="scroll-line" id="line1"></div>
-    <div class="scroll-line" id="line2"></div>
-  </div>
-
-  <!-- Groupe du bas -->
-  <div class="scroll-group">
-    <div class="scroll-line" id="line3"></div>
-    <div class="scroll-line" id="line4"></div>
-  </div>
+<div class="cat-btn" onclick="filter('all')">Toutes</div>
+<div class="cat-btn" onclick="filter('Gaming')">Gaming</div>
+<div class="cat-btn" onclick="filter('Divertissement')">Divertissement</div>
+<div class="cat-btn" onclick="filter('Utilitaire')">Utilitaire</div>
+<div class="cat-btn" onclick="filter('Internet')">Internet</div>
+<div class="cat-btn" onclick="filter('Musique')">Musique</div>
+<div class="cat-btn" onclick="filter('Education')">Education</div>
+<div class="cat-btn" onclick="filter('Communication')">Communication</div>
+<div class="cat-btn" onclick="filter('Productivite')">Productivité</div>
 
 </div>
 
-<h2>🎯 Applications de la catégorie sélectionnée</h2>
-<div class="app-cadre" id="filteredCategory"></div>
+<div class="apps" id="apps"></div>
+
+<footer>
+MLG XGame © — Applications Launcher
+</footer>
 
 <script>
-// Liste des applications
-const apps = [
-  // 🎭 Divertissement
+
+/* ========= AJOUTE TES APPS ICI ========= */
+
+const apps=[
+ // 🎭 Divertissement
   { 
     nom:"Netflix",
     categorie:"Divertissement",
@@ -990,167 +953,81 @@ const apps = [
   },
 ];
 
+/* ========= RENDER ========= */
 
-const lines = [
-  document.getElementById("line1"),
-  document.getElementById("line2"),
-  document.getElementById("line3"),
-  document.getElementById("line4")
-];
-apps.forEach((app, index) => {
-  const div = document.createElement("div");
-  div.className = "category-app";
+function render(list){
+const container=document.getElementById("apps");
+container.innerHTML="";
 
-  div.innerHTML = `
-    <img src="${app.img}">
-    <div class="app-info-mini">
-      <h4>${app.nom}</h4>
-      <p>${app.desc}</p>
+list.forEach((app,index)=>{
+container.innerHTML+=`
+<div class="card">
+<img src="${app.img}">
+<div class="card-content">
 
-      <div class="btn-telecharger" onclick="this.nextElementSibling.classList.toggle('show')">
-        📥 Télécharger
-      </div>
+<h3>${app.nom}</h3>
+<p>${app.description}</p>
 
-      <div class="download-options">
-        ${app.playstore ? `<a class="btn-telecharger" href="${app.playstore}" target="_blank">📱 Play Store</a>` : ""}
-        ${app.appstore ? `<a class="btn-telecharger" href="${app.appstore}" target="_blank">🍎 App Store</a>` : ""}
-        ${app.windows ? `<a class="btn-telecharger" href="${app.windows}" target="_blank">📦 Windows</a>` : ""}
-      </div>
-    </div>
-  `;
+<button class="download-btn"
+onclick="toggleMenu(event,'menu${index}')">
+Download
+</button>
 
-  lines[index % 4].appendChild(div);
+<div class="download-menu" id="menu${index}">
+<a href="${app.playstore}" target="_blank">Play Store</a>
+<a href="${app.appstore}" target="_blank">App Store</a>
+<a href="${app.windows}" target="_blank">Windows</a>
+</div>
+
+</div>
+</div>
+`;
 });
-
-
-// Créer les trois liens cachés
-function createDownloadButtons(app){
-  return `
-    <button class="btn-telecharger" onclick="toggleDownloads(this)">📥 Télécharger</button>
-    <div class="download-options" style="display:none;">
-      <a class="btn-telecharger" href="${app.playstore}" target="_blank">📱 Play Store</a>
-      <a class="btn-telecharger" href="${app.appstore}" target="_blank">🍎 App Store</a>
-      <a class="btn-telecharger" href="${app.windows}" target="_blank">📦 Windows</a>
-    </div>
-  `;
 }
 
-// Fonction toggle
-function toggleDownloads(button){
-  const container = button.nextElementSibling;
-  container.style.display = (container.style.display === "none") ? "block" : "none";
+render(apps);
+
+/* ========= FILTER ========= */
+
+function filter(cat){
+if(cat==="all") return render(apps);
+
+render(apps.filter(a=>a.categorie===cat));
 }
 
-// Applications populaires : les 6 premières
-const categoryAppsContainer = document.getElementById("categoryApps");
-const popularAppsContainer = document.getElementById("popularApps"); 
+/* ========= SEARCH ========= */
 
-apps.slice(0,6).forEach(app => {
-  const div = document.createElement("div");
-  div.className = "app";
-  div.innerHTML = `<img src="${app.img}" alt="${app.nom}">
-                   <div class="app-info">
-                     <h4>${app.nom}</h4>
-                     <p>${app.desc}</p>
-                     ${createDownloadButtons(app)}
-                   </div>`;
-  popularAppsContainer.appendChild(div);
+function searchApp(){
+let text=document.getElementById("search").value.toLowerCase();
+
+render(apps.filter(a=>
+a.nom.toLowerCase().includes(text)
+));
+}
+
+/* ========= POPUP ========= */
+
+function toggleMenu(event,id){
+
+event.stopPropagation();
+
+document.querySelectorAll(".download-menu")
+.forEach(menu=>menu.style.display="none");
+
+const menu=document.getElementById(id);
+
+menu.style.display=
+menu.style.display==="flex" ? "none" : "flex";
+}
+
+document.addEventListener("click",()=>{
+document.querySelectorAll(".download-menu")
+.forEach(menu=>menu.style.display="none");
 });
-
-// Filtrer par catégorie
-function filterCategory(categorie){
-  const container = document.getElementById("filteredCategory");
-  container.innerHTML = "";
-  apps.filter(app => app.categorie === categorie).forEach(app => {
-    const div = document.createElement("div");
-    div.className = "category-app";
-    div.innerHTML = `<img src="${app.img}" alt="${app.nom}">
-                     <div class="app-info-mini">
-                       <h4>${app.nom}</h4>
-                       <p>${app.desc}</p>
-                       ${createDownloadButtons(app)}
-                     </div>`;
-    container.appendChild(div);
-  });
-  container.scrollIntoView({behavior:'smooth'});
-}
-
-function createDownloadButtons(app) {
-  let buttons = "";
-  if (app.playstore) {
-    buttons += `<a class="btn-telecharger" href="${app.playstore}" target="_blank">📱 Play Store</a>`;
-  }
-  if (app.appstore) {
-    buttons += `<a class="btn-telecharger" href="${app.appstore}" target="_blank">🍎 App Store</a>`;
-  }
-  if (app.windows) {
-    buttons += `<a class="btn-telecharger" href="${app.windows}" download target="_blank">📦 Windows</a>`;
-  }
-  return buttons;
-}
-
-// Barre de recherche
-const searchInput = document.getElementById("searchInput");
-
-searchInput.addEventListener("input", function() {
-  const query = this.value.toLowerCase();
-  const container = document.getElementById("filteredCategory");
-  container.innerHTML = "";
-
-  // Filtrer toutes les apps dont le nom contient la recherche
-  apps.filter(app => app.nom.toLowerCase().includes(query))
-      .forEach(app => {
-    const div = document.createElement("div");
-    div.className = "category-app";
-    div.innerHTML = `
-      <img src="${app.img}" alt="${app.nom}">
-      <div class="app-info-mini">
-        <h4>${app.nom}</h4>
-        <p>${app.desc}</p>
-        ${createDownloadButtons(app)}
-      </div>
-    `;
-    container.appendChild(div);
-  });
-
-  container.scrollIntoView({ behavior: 'smooth' });
-});
-
-function createDownloadButtons(app) {
-  let buttons = '';
-
-  if (app.playstore) {
-    buttons += `<a href="${app.playstore}" target="_blank" class="btn-telecharger">Play Store</a>`;
-  }
-
-  if (app.appstore) {
-    buttons += `<a href="${app.appstore}" target="_blank" class="btn-telecharger">App Store</a>`;
-  }
-
-  if (app.windows) {
-    buttons += `<a href="${app.windows}" target="_blank" class="btn-telecharger">Windows</a>`;
-  }
-
-  if (buttons === '') return '';
-
-  return `
-    <div class="download-wrapper">
-      <div class="btn-telecharger" onclick="this.nextElementSibling.classList.toggle('show')">
-        Télécharger
-      </div>
-      <div class="download-options">
-        ${buttons}
-      </div>
-    </div>
-  `;
-}
 
 </script>
-    <footer>
-      <p>
-        &copy; 2026 MLG-XGame by MLG-Xtech - Tous droits réservés
-      </p>
-    </footer>
+
 </body>
 </html>
+
 
