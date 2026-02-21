@@ -25,15 +25,17 @@ font-family:Arial, Helvetica, sans-serif;
 background:linear-gradient(135deg,#000,#0a0a1a);
 color:white;
 }
-
-h1{
-  text-align:center;
+header{
   padding:20px;
-  font-size:32px;
-  background:linear-gradient(90deg,#9900ff,#00d8ff);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  text-shadow:0 0 10px #9900ff;
+  text-align:center;
+  background:#000;
+  box-shadow:0 0 20px #9900ff;
+}
+
+header h1{
+  margin:0;
+  font-size:28px;
+  color:#9900ff;
 }
 p {
    font-size: 9px;
@@ -136,9 +138,9 @@ p {
 </head>
 
 <body>
-
+<header>
 <h1>🎮 MLG XGame — Jeux </h1>
-
+</header>
 <div class="search-box">
   <input type="text" id="search" placeholder="🔍 Rechercher un jeu..." onkeyup="searchGame()">
 </div>
@@ -433,6 +435,7 @@ function closeGame(){
 
 </body>
 </html>
+
 
 
 
