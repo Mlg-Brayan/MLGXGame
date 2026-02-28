@@ -264,44 +264,9 @@ p {
       font-size: 14px;
       color: white;
     }
-.profile {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%; /* rend l'image ronde */
-  object-fit: cover;
-}
-#splash {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: black; /* ou gradient sombre */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-}
-
-#splash-logo {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%; /* rond */
-  animation: glow 2s infinite alternate;
-}
-
-@keyframes glow {
-  from { filter: drop-shadow(0 0 5px #9900ff); }
-  to { filter: drop-shadow(0 0 20px #ff00ff); }
-}
   </style>
 </head>
 <body>
-
-<div id="splash">
-  <img src="logo.png" alt="MLG XGame Logo" id="splash-logo">
-</div>
-  
   <h1>MLG XGame </h1>
 <!-- MESSAGE D'ACCUEIL -->
 <div id="welcome-msg" style="
@@ -938,12 +903,6 @@ function addComment(){
 }
 </script>
 
-  <script>
-  window.addEventListener('load', function() {
-    const splash = document.getElementById('splash');
-    splash.style.display = 'none';
-  });
-</script>
 
   <footer>
     MLG XGame &copy; - Tous droits réservés
@@ -952,6 +911,7 @@ function addComment(){
 </body>
 
   </html>
+
 
 
 
