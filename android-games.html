@@ -556,8 +556,12 @@ footer a:hover { color: var(--purple); }
 </div>
  
 <!-- GAMES GRID -->
-<div class="games" id="games"></div>
- 
+<div class="games" id="games">
+  <!-- SPORT -->
+  <div class="card visible" data-cat="Sport">...</div>
+  ...
+</div>
+  
 <!-- COMMENTS -->
 <div class="comments-section">
   <h2>💬 Commentaires</h2>
@@ -818,10 +822,12 @@ render(androidGames);
 /* ── FILTER ── */
 function filter(cat, btn) {
   document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
-  if (btn) {
-    btn.classList.add('active');
-    btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-  }
+  if (btn) btn.classList.add('active');
+  document.querySelectorAll('.card').forEach(c => {
+    c.style.display = (cat === 'all' || c.dataset.cat === cat) ? 'flex' : 'none';
+  });
+  document.getElementById('section-title').textContent = cat === 'all' ? 'Tous les jeux' : cat;
+}
   const title = document.getElementById('section-title');
   if (cat === 'all') {
     title.textContent = 'Tous les jeux';
