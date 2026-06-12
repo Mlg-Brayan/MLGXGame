@@ -822,12 +822,10 @@ render(androidGames);
 /* ── FILTER ── */
 function filter(cat, btn) {
   document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
-  if (btn) btn.classList.add('active');
-  document.querySelectorAll('.card').forEach(c => {
-    c.style.display = (cat === 'all' || c.dataset.cat === cat) ? 'flex' : 'none';
-  });
-  document.getElementById('section-title').textContent = cat === 'all' ? 'Tous les jeux' : cat;
-}
+  if (btn) {
+    btn.classList.add('active');
+    btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  }
   const title = document.getElementById('section-title');
   if (cat === 'all') {
     title.textContent = 'Tous les jeux';
