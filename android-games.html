@@ -2452,140 +2452,76 @@ const androidGames = [
 { nom:"Jetpack Joyride", slug:"jetpack-joyride", img:"img/jetpack-joyride.jpg", description:"Cours et évite les obstacles avec ton jetpack.", categorie:"Casual", lien:"android-games/casual/jetpack-joyride.html", note:4.4, badge:"Populaire 🔥" },
 ];
  
-/* ── GAME COUNT ANIMATION ── */
+/* ── COUNTER ── */
 function animateCount(target) {
   const el = document.getElementById('gameCountNum');
   let count = 0;
-  const step = Math.ceil(target / 30);
+  const step = Math.max(1, Math.ceil(target / 30));
   const timer = setInterval(() => {
     count = Math.min(count + step, target);
     el.textContent = count;
     if (count >= target) clearInterval(timer);
   }, 30);
 }
-
-// Compte les cartes statiques au chargement
+ 
+/* ── INIT AU CHARGEMENT ── */
 window.addEventListener('DOMContentLoaded', () => {
-  const total = document.querySelectorAll('.card').length;
-  animateCount(total);
+  animateCount(document.querySelectorAll('.card').length);
 });
- 
-/* ── SCROLL REVEAL OBSERVER ── */
-const cardObserver = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
-    } else {
-      e.target.classList.remove('visible');
-    }
-  });
-}, { threshold: 0.1 });
- 
-/* ── RENDER ── */
-function render(list) {
-  const container = document.getElementById("games");
-  container.innerHTML = "";
-  if (list.length === 0) {
-    container.innerHTML = '<div class="empty">Aucun jeu trouvé 😕</div>';
-    document.getElementById('gameCountNum').textContent = '0';
-    return;
-  }
-  animateCount(list.length);
- 
-  // Jeux "nouveaux" — les 15 derniers de chaque catégorie
-  const newSlugs = ['need-for-speed-no-limits','asphalt-legends-unite','legends-of-kingdom-rush','dungeon-hunter-5','minecraft-multiplayer'];
- 
-  list.forEach((game, i) => {
-    const div = document.createElement('div');
-    div.className = 'card';
-    div.style.transitionDelay = `${Math.min(i * 0.04, 0.6)}s`;
- 
-    // CSS stars
-    const fullStars = Math.floor(game.note);
-    const hasHalf = game.note % 1 >= 0.5;
-    let starsHTML = '';
-    for (let s = 1; s <= 5; s++) {
-      if (s <= fullStars) starsHTML += '<div class="star-css filled"></div>';
-      else if (s === fullStars + 1 && hasHalf) starsHTML += '<div class="star-css half"></div>';
-      else starsHTML += '<div class="star-css"></div>';
-    }
- 
-    const isNew = newSlugs.includes(game.slug);
- 
-    div.innerHTML = `
-      <a class="card-link" href="${game.lien}" aria-label="Voir ${game.nom}"></a>
-      <div class="card-img">
-        ${game.badge ? `<span class="badge-top">${game.badge}</span>` : ''}
-        ${isNew ? `<span class="badge-new">Nouveau ✨</span>` : ''}
-        <img src="${game.img}" alt="${game.nom}" loading="lazy" onerror="this.style.background='#1a0a2e';this.src=''">
-      </div>
-      <div class="card-content">
-        <span class="badge-cat">${game.categorie}</span>
-        <h3>${game.nom}</h3>
-        <p>${game.description}</p>
-        <div class="card-note">
-          <div class="stars-css">${starsHTML}</div>
-          <span class="note-val">${game.note}</span>
-        </div>
-        <button class="download-btn" onclick="window.location.href='${game.lien}'">&#11015; Obtenir</button>
-      </div>
-    `;
-    container.appendChild(div);
-    cardObserver.observe(div);
-  });
-}
-render(androidGames);
  
 /* ── FILTER ── */
 function filter(cat, btn) {
   document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
-  if (btn) { 
-    btn.classList.add('active'); 
-    btn.scrollIntoView({behavior:'smooth', block:'nearest', inline:'center'}); 
+  if (btn) {
+    btn.classList.add('active');
+    btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
   }
-  
   let count = 0;
   document.querySelectorAll('.card').forEach(c => {
-    if (cat === 'all' || c.dataset.cat === cat) {
-      c.style.display = 'flex';
-      count++;
-    } else {
-      c.style.display = 'none';
-    }
+    const match = cat === 'all' || c.getAttribute('data-cat') === cat;
+    c.style.display = match ? 'flex' : 'none';
+    if (match) count++;
   });
-
   document.getElementById('section-title').textContent = cat === 'all' ? 'Tous les jeux' : cat;
   animateCount(count);
 }
  
 /* ── SEARCH ── */
 function searchGame() {
-  const text = document.getElementById("search").value.toLowerCase().trim();
+  const text = document.getElementById('search').value.toLowerCase().trim();
   document.getElementById('searchClear').style.display = text ? 'block' : 'none';
+  let count = 0;
   document.querySelectorAll('.card').forEach(c => {
-    const nom = c.querySelector('h3').textContent.toLowerCase();
-    const desc = c.querySelector('p').textContent.toLowerCase();
-    c.style.display = (!text || nom.includes(text) || desc.includes(text)) ? 'flex' : 'none';
+    const nom = c.querySelector('h3') ? c.querySelector('h3').textContent.toLowerCase() : '';
+    const desc = c.querySelector('p') ? c.querySelector('p').textContent.toLowerCase() : '';
+    const cat = c.getAttribute('data-cat') ? c.getAttribute('data-cat').toLowerCase() : '';
+    const match = !text || nom.includes(text) || desc.includes(text) || cat.includes(text);
+    c.style.display = match ? 'flex' : 'none';
+    if (match) count++;
   });
+  document.getElementById('section-title').textContent = text ? `Résultats pour "${text}"` : 'Tous les jeux';
+  animateCount(count);
 }
-  
+ 
+/* ── CLEAR SEARCH ── */
 function clearSearch() {
   document.getElementById('search').value = '';
   document.getElementById('searchClear').style.display = 'none';
   document.querySelectorAll('.card').forEach(c => c.style.display = 'flex');
   document.getElementById('section-title').textContent = 'Tous les jeux';
+  animateCount(document.querySelectorAll('.card').length);
 }
  
 /* ── COMMENTS ── */
 function addComment() {
-  const input = document.getElementById("comment-input");
+  const input = document.getElementById('comment-input');
   const text = input.value.trim();
   if (!text) return;
-  const div = document.createElement("div");
-  div.className = "comment";
+  const div = document.createElement('div');
+  div.className = 'comment';
   div.textContent = text;
-  document.getElementById("comments-list").prepend(div);
-  input.value = "";
+  document.getElementById('comments-list').prepend(div);
+  input.value = '';
 }
 </script>
 </body>
