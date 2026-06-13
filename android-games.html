@@ -2463,6 +2463,12 @@ function animateCount(target) {
     if (count >= target) clearInterval(timer);
   }, 30);
 }
+
+// Compte les cartes statiques au chargement
+window.addEventListener('DOMContentLoaded', () => {
+  const total = document.querySelectorAll('.card').length;
+  animateCount(total);
+});
  
 /* ── SCROLL REVEAL OBSERVER ── */
 const cardObserver = new IntersectionObserver((entries) => {
@@ -2533,25 +2539,23 @@ render(androidGames);
 /* ── FILTER ── */
 function filter(cat, btn) {
   document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
-  if (btn) { btn.classList.add('active'); btn.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'}); }
-  document.querySelectorAll('.card').forEach(c => {
-    c.style.display = (cat === 'all' || c.dataset.cat === cat) ? 'flex' : 'none';
-  });
-  document.getElementById('section-title').textContent = cat === 'all' ? 'Tous les jeux' : cat;
-  document.getElementById('gameCountNum').textContent = document.querySelectorAll('.card:not([style*="none"])').length;
-}
-  const title = document.getElementById('section-title');
-  if (cat === 'all') {
-    title.textContent = 'Tous les jeux';
-    render(androidGames);
-  } else {
-    title.textContent = cat;
-    render(androidGames.filter(g => g.categorie === cat));
+  if (btn) { 
+    btn.classList.add('active'); 
+    btn.scrollIntoView({behavior:'smooth', block:'nearest', inline:'center'}); 
   }
-  // Reset delay after animation
-  setTimeout(() => {
-    document.querySelectorAll('.card').forEach(c => c.style.transitionDelay = '0s');
-  }, 800);
+  
+  let count = 0;
+  document.querySelectorAll('.card').forEach(c => {
+    if (cat === 'all' || c.dataset.cat === cat) {
+      c.style.display = 'flex';
+      count++;
+    } else {
+      c.style.display = 'none';
+    }
+  });
+
+  document.getElementById('section-title').textContent = cat === 'all' ? 'Tous les jeux' : cat;
+  animateCount(count);
 }
  
 /* ── SEARCH ── */
